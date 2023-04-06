@@ -1,6 +1,9 @@
+import Background from "../item/background.js";
+
 export default class GameCanvas {
   #canvas;
   #ctx;
+  #background;
   constructor() {
     this.#canvas = document.createElement("canvas");
     document.body.append(this.#canvas);
@@ -8,5 +11,16 @@ export default class GameCanvas {
     this.#ctx = this.#canvas.getContext("2d");
     this.#canvas.width = 1520;
     this.#canvas.height = 850;
+
+    this.#background = new Background();
+  }
+
+  paint() {
+    this.#background.draw(this.#ctx);
+    console.log("AAA");
+  }
+
+  run() {
+    this.paint();
   }
 }
