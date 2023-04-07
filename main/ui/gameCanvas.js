@@ -2,12 +2,17 @@ import Background from "../item/background.js";
 import MaskDude from "../item/characters/maskDude.js";
 import PinkMan from "../item/characters/pinkMan.js";
 import VirtualGuy from "../item/characters/virtualGuy.js";
+import In from "../item/gameTitle/IN.js";
+import To from "../item/gameTitle/TO.js";
+import The from "../item/gameTitle/THE.js";
+import Trophy from "../item/gameTitle/TROPHY.js";
 
 export default class GameCanvas {
   #canvas;
   #ctx;
   #background;
   #characters;
+  #gameTitle;
 
   constructor() {
     this.#canvas = document.createElement("canvas");
@@ -24,11 +29,21 @@ export default class GameCanvas {
       new PinkMan({ x: 1250, y: 550 }, 850),
       new VirtualGuy({ x: 1350, y: 300 }, 950),
     ];
+
+    this.#gameTitle = [
+      new In({ x: 2000, y: 100 }),
+      new To({ x: 2300, y: 100 }),
+      new The({ x: 2500, y: 100 }),
+      new Trophy({ x: 2900, y: 100 }),
+    ];
   }
 
   update() {
     for (let character of this.#characters) {
       character.moveTo();
+    }
+    for (let title of this.#gameTitle) {
+      title.moveTo();
     }
   }
 
@@ -36,6 +51,9 @@ export default class GameCanvas {
     this.#background.draw(this.#ctx);
     for (let character of this.#characters) {
       character.draw(this.#ctx);
+    }
+    for (let title of this.#gameTitle) {
+      title.draw(this.#ctx);
     }
   }
 
