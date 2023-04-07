@@ -48,7 +48,7 @@ export default class Character {
       this.#currentImg = this.#img.color;
       const characterName = this.#name;
       localStorage.setItem("characterName", characterName);
-      window.location.href = "/stage/stage1/app.html";
+      window.location.href = "/stageSelect/app.html";
     }
   }
   draw(ctx) {
