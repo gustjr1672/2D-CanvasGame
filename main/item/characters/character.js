@@ -69,4 +69,20 @@ export default class Character {
         break;
     }
   }
+
+  moveTo() {
+    if (this.#position.x < this.#positionTomove) {
+      this.#position.x += this.#velocityX;
+      this.#currentSprite = this.#sprites.run.right;
+      if (this.#position.x >= this.#positionTomove) {
+        this.#currentSprite = this.#sprites.stand.left;
+      }
+    } else if (this.#position.x > this.#positionTomove) {
+      this.#position.x -= this.#velocityX;
+      this.#currentSprite = this.#sprites.run.left;
+      if (this.#position.x <= this.#positionTomove) {
+        this.#currentSprite = this.#sprites.stand.right;
+      }
+    }
+  }
 }
