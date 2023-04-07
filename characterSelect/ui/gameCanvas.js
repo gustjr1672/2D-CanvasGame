@@ -25,6 +25,24 @@ export default class gameCanvas {
       new PinkMan({ x: 740, y: 380 }),
       new VirtualGuy({ x: 340, y: 380 }),
     ];
+
+    for (let character of this.#characters) {
+      this.#canvas.addEventListener("mousemove", (e) => {
+        this.mouseMove(e, character);
+      });
+
+      this.#canvas.addEventListener("click", (e) => {
+        this.mouseclick(e, character);
+      });
+    }
+  }
+
+  mouseMove(e, character) {
+    character.Hover(e);
+  }
+
+  mouseclick(e, character) {
+    character.click(e);
   }
 
   paint() {
