@@ -10,12 +10,14 @@ export default class GameCanvas {
   #selectLevel;
   #trophys;
   #stageButtons;
+  #openStage;
   constructor() {
     this.#canvas = document.createElement("canvas");
     document.body.append(this.#canvas);
     this.#ctx = this.#canvas.getContext("2d");
     this.#canvas.width = 1520;
     this.#canvas.height = 850;
+    this.#openStage = 1;
     this.#background = new Background();
     this.#selectLevel = new SelectLevel();
     this.#trophys = [
@@ -25,6 +27,11 @@ export default class GameCanvas {
     this.#stageButtons = [];
     for (let i = 0; i < 7; i++) {
       this.#stageButtons[i] = new StageButton({ x: 100 + 200 * i, y: 500 }, 130, 130);
+    }
+    for (let i = 0; i < this.#openStage; i++) {
+      this.#canvas.addEventListener("mousemove", (event) => {
+        this.mouseMove(event, this.#stageButtons[i]);
+      });
     }
   }
 
@@ -46,5 +53,8 @@ export default class GameCanvas {
   run() {
     requestAnimationFrame(this.run.bind(this));
     this.paint();
+  }
+  mouseMove(event, stageBtns) {
+    stageBtns.buttonHover(event);
   }
 }
