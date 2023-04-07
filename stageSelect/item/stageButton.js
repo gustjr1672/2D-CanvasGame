@@ -4,9 +4,10 @@ export default class StageButton {
   #height;
   #img;
   #stageButton;
-
+  #stageLock;
   constructor({ x, y }, width, height) {
     this.#stageButton = document.getElementById("stageButton");
+    this.#stageLock = document.getElementById("stageLock");
 
     this.#position = {
       x,
@@ -19,5 +20,8 @@ export default class StageButton {
 
   draw(ctx) {
     ctx.drawImage(this.#img, this.#position.x, this.#position.y, this.#width, this.#height);
+  }
+  lockStage() {
+    this.#img = this.#stageLock;
   }
 }

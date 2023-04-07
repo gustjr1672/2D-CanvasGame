@@ -33,8 +33,13 @@ export default class GameCanvas {
     this.#selectLevel.draw(this.#ctx);
     this.#trophys[0].draw(this.#ctx);
     this.#trophys[1].draw(this.#ctx);
-    for (let stageButton of this.#stageButtons) {
-      stageButton.draw(this.#ctx);
+    for (let i in this.#stageButtons) {
+      if (i == 0) {
+        this.#stageButtons[i].draw(this.#ctx);
+      } else {
+        this.#stageButtons[i].lockStage();
+        this.#stageButtons[i].draw(this.#ctx);
+      }
     }
   }
 
