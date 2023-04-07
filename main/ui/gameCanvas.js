@@ -6,6 +6,7 @@ import In from "../item/gameTitle/IN.js";
 import To from "../item/gameTitle/TO.js";
 import The from "../item/gameTitle/THE.js";
 import Trophy from "../item/gameTitle/TROPHY.js";
+import StartBtn from "../item/button/startBtn.js";
 
 export default class GameCanvas {
   #canvas;
@@ -13,6 +14,7 @@ export default class GameCanvas {
   #background;
   #characters;
   #gameTitle;
+  #startBtn;
 
   constructor() {
     this.#canvas = document.createElement("canvas");
@@ -36,6 +38,18 @@ export default class GameCanvas {
       new The({ x: 2500, y: 100 }),
       new Trophy({ x: 2900, y: 100 }),
     ];
+
+    this.#startBtn = new StartBtn({ x: 650, y: 650 });
+
+    this.#canvas.addEventListener("mousemove", this.mouseMove.bind(this));
+    this.#canvas.addEventListener("click", this.mouseclick.bind(this));
+  }
+
+  mouseMove(e) {
+    this.#startBtn.buttonHover(e);
+  }
+  mouseclick(e) {
+    this.#startBtn.buttonClick(e);
   }
 
   update() {
@@ -55,6 +69,7 @@ export default class GameCanvas {
     for (let title of this.#gameTitle) {
       title.draw(this.#ctx);
     }
+    this.#startBtn.draw(this.#ctx);
   }
 
   run() {
