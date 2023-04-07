@@ -23,4 +23,10 @@ export default class Text {
   draw(ctx) {
     ctx.drawImage(this.#img, this.#position.x, this.#position.y, this.#width, this.#height);
   }
+
+  moveTo() {
+    if (this.#position.x >= this.#positionToMove) {
+      this.#position.x -= this.#velocityX;
+    }
+  }
 }
