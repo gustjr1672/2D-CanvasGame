@@ -27,7 +27,30 @@ export default class Character {
 
     this.#currentImg = this.#img.black;
   }
+  Hover(e) {
+    if (
+      e.offsetX >= this.#position.x &&
+      e.offsetX <= this.#position.x + this.#width &&
+      e.offsetY >= this.#position.y &&
+      e.offsetY <= this.#position.y + this.#height
+    ) {
+      this.#currentImg = this.#img.color;
+    } else this.#currentImg = this.#img.black;
+  }
 
+  click(e) {
+    if (
+      e.offsetX >= this.#position.x &&
+      e.offsetX <= this.#position.x + this.#width &&
+      e.offsetY >= this.#position.y &&
+      e.offsetY <= this.#position.y + this.#height
+    ) {
+      this.#currentImg = this.#img.color;
+      const characterName = this.#name;
+      //GET 방식으로 데이터 전달
+      window.location.href = "/stage/stage1/app.html";
+    }
+  }
   draw(ctx) {
     ctx.drawImage(
       this.#currentImg,
