@@ -1,6 +1,7 @@
 import Background from "../item/background.js";
 import SelectLevel from "../item/selectLevel.js";
 import TrophySprite from "../item/trophySprite.js";
+import StageButton from "../item/stageButton.js";
 
 export default class GameCanvas {
   #canvas;
@@ -8,6 +9,7 @@ export default class GameCanvas {
   #background;
   #selectLevel;
   #trophys;
+  #stageButtons;
   constructor() {
     this.#canvas = document.createElement("canvas");
     document.body.append(this.#canvas);
@@ -20,6 +22,10 @@ export default class GameCanvas {
       new TrophySprite({ x: 80, y: 120 }, 200, 200),
       new TrophySprite({ x: 1230, y: 120 }, 200, 200),
     ];
+    this.#stageButtons = [];
+    for (let i = 0; i < 7; i++) {
+      this.#stageButtons[i] = new StageButton({ x: 100 + 200 * i, y: 500 }, 130, 130);
+    }
   }
 
   paint() {
@@ -27,6 +33,9 @@ export default class GameCanvas {
     this.#selectLevel.draw(this.#ctx);
     this.#trophys[0].draw(this.#ctx);
     this.#trophys[1].draw(this.#ctx);
+    for (let stageButton of this.#stageButtons) {
+      stageButton.draw(this.#ctx);
+    }
   }
 
   run() {
