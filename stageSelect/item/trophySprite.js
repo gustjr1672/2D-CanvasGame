@@ -3,6 +3,7 @@ export default class TrophySprite {
   #width;
   #height;
   #position;
+  #frame;
   constructor({ x, y }, width, height) {
     this.#position = {
       x,
@@ -14,6 +15,21 @@ export default class TrophySprite {
     this.#img = document.getElementById("trophySprite");
   }
   draw(ctx) {
-    ctx.drawImage(this.#img, this.#position.x, this.#position.y, this.#width, this.#height);
+    ctx.drawImage(
+      this.#img,
+      64 * parseInt(this.#frame / 6),
+      0,
+      64,
+      64,
+      this.#position.x,
+      this.#position.y,
+      this.#width,
+      this.#height
+    );
+    this.#frame++;
+
+    if (this.#frame > 42) {
+      this.#frame = 0;
+    }
   }
 }

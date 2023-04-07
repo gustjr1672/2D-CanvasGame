@@ -30,6 +30,7 @@ export default class GameCanvas {
   }
 
   run() {
+    requestAnimationFrame(this.run.bind(this));
     this.paint();
   }
 }
