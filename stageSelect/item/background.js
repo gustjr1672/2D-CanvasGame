@@ -2,7 +2,7 @@ export default class Background {
   #img;
   #width;
   #height;
-  #frame;
+
   #position;
   constructor() {
     this.#position = {
