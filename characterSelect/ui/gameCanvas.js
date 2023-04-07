@@ -2,13 +2,13 @@ import Background from "../item/background.js";
 import MaskDude from "../item/characters/maskDude.js";
 import PinkMan from "../item/characters/pinkMan.js";
 import VirtualGuy from "../item/characters/virtualGuy.js";
-
+import Text from "../item/text.js";
 export default class gameCanvas {
   #canvas;
   #ctx;
   #background;
   #characters;
-
+  #text;
   constructor() {
     this.#canvas = document.createElement("canvas");
     document.body.append(this.#canvas);
@@ -25,6 +25,8 @@ export default class gameCanvas {
       new PinkMan({ x: 740, y: 380 }),
       new VirtualGuy({ x: 340, y: 380 }),
     ];
+
+    this.#text = new Text({ x: 420, y: 80 });
 
     for (let character of this.#characters) {
       this.#canvas.addEventListener("mousemove", (e) => {
@@ -51,6 +53,8 @@ export default class gameCanvas {
     for (let character of this.#characters) {
       character.draw(this.#ctx);
     }
+
+    this.#text.draw(this.#ctx);
   }
 
   run() {
