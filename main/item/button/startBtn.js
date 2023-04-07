@@ -38,7 +38,7 @@ export default class StartBtn {
       e.offsetY >= this.#position.y &&
       e.offsetY <= this.#position.y + this.#height
     ) {
-      window.location.href = "../playerSeclect/app.html";
+      window.location.href = "/characterSelect/app.html";
     }
   }
 
