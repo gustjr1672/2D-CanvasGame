@@ -47,7 +47,7 @@ export default class Character {
     ) {
       this.#currentImg = this.#img.color;
       const characterName = this.#name;
-      //GET 방식으로 데이터 전달
+      localStorage.setItem("characterName", characterName);
       window.location.href = "/stage/stage1/app.html";
     }
   }
