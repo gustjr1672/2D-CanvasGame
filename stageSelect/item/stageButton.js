@@ -34,6 +34,15 @@ export default class StageButton {
       this.#img = this.#stageButtonHover;
     else this.#img = this.#stageButton;
   }
+  buttonClick(event) {
+    if (
+      event.offsetX >= this.#position.x &&
+      event.offsetX <= this.#position.x + this.#width &&
+      event.offsetY >= this.#position.y &&
+      event.offsetY <= this.#position.y + this.#height
+    )
+      console.log("click");
+  }
   lockStage() {
     this.#img = this.#stageLock;
   }

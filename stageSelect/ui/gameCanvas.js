@@ -32,6 +32,9 @@ export default class GameCanvas {
       this.#canvas.addEventListener("mousemove", (event) => {
         this.mouseMove(event, this.#stageButtons[i]);
       });
+      this.#canvas.addEventListener("click", (event) => {
+        this.mouseclick(event, this.#stageButtons[i]);
+      });
     }
   }
 
@@ -56,5 +59,8 @@ export default class GameCanvas {
   }
   mouseMove(event, stageBtns) {
     stageBtns.buttonHover(event);
+  }
+  mouseclick(event, stageBtns) {
+    stageBtns.buttonClick(event);
   }
 }
